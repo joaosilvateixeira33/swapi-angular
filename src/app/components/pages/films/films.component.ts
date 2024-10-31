@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilmesService } from 'src/app/services/filmes.service';
+import { FilmeService } from 'src/app/services/filmes.service';
 
 @Component({
   selector: 'app-films',
@@ -10,11 +10,16 @@ export class FilmsComponent implements OnInit {
 
   filmes: any[] = [];
 
-  constructor(private filmesService: FilmesService) {}
+  constructor(private filmesService: FilmeService) {}
 
-  ngOnInit():void {
-    this.filmesService.getFilms().subscribe(data =>{
-      this.filmes = data;
+  ngOnInit(): void {
+    this.filmesService.getFilmes().subscribe({
+      next: (response) => {
+        this.filmes = response.results;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar filmes:', err);
+      }
     });
   }
 

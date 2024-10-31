@@ -1,24 +1,20 @@
 <div class="films__page container">
-  <table mat-table [dataSource]="filmes" class="mat-elevation-z8">
-    <!-- Título Column -->
-    <ng-container matColumnDef="titulo" class="teste">
-      <th mat-header-cell *matHeaderCellDef> Título </th>
-      <td mat-cell *matCellDef="let filme"> {{filme.titulo}} </td>
-    </ng-container>
-  
-    <!-- Ano Column -->
-    <ng-container matColumnDef="ano">
-      <th mat-header-cell *matHeaderCellDef> Ano </th>
-      <td mat-cell *matCellDef="let filme"> {{filme.ano}} </td>
-    </ng-container>
-  
-    <!-- Diretor Column -->
-    <ng-container matColumnDef="diretor">
-      <th mat-header-cell *matHeaderCellDef> Diretor </th>
-      <td mat-cell *matCellDef="let filme"> {{filme.diretor}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="['titulo', 'ano', 'diretor']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['titulo', 'ano', 'diretor']"></tr>
-  </table>  
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Episódio</th>
+        <th>Diretor</th>
+        <th>Data de Lançamento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let filme of filmes">
+        <td>{{ filme.title }}</td>
+        <td>{{ filme.episode_id }}</td>
+        <td>{{ filme.director }}</td>
+        <td>{{ filme.release_date }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
